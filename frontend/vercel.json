@@ -7,6 +7,6 @@
     }
   ],
   "env": {
-    "API_URL": "https://your-backend-domain.vercel.app"
+    "API_URL": "@api_url"
   }
 }

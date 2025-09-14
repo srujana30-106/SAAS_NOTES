@@ -5,9 +5,9 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
-const authRoutes = require('./routes/auth');
-const notesRoutes = require('./routes/notes');
-const tenantRoutes = require('./routes/tenants');
+const authRoutes = require('../routes/auth');
+const notesRoutes = require('../routes/notes');
+const tenantRoutes = require('../routes/tenants');
 
 const app = express();
 
@@ -63,20 +63,10 @@ const connectDB = async () => {
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1);
   }
 };
 
 // Connect to database
 connectDB();
 
-// For Vercel serverless functions
 module.exports = app;
-
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
